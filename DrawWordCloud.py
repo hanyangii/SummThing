@@ -23,7 +23,7 @@ else:
 
 #read from local file
 def read_text(fileName):
-	location = '/Users/jeongjiwon/SummThing/%s' %fileName
+	location = '../SummThing/%s' %fileName
 	with open(location, 'r') as f:
 		doc = f.read().decode('utf-8')
 	f.close()

@@ -50,7 +50,7 @@ def draw_cloud(tags, filename, fontname='Noto Sans CJK', size=(800, 600)):
 
 #bill_num = '1904880'
 #text = get_bill_text(bill_num)
-bill_num = 'newspaper'
+bill_num = '소나기.txt'
 text = read_text(bill_num)
 tags = get_tags(text)
 print(tags)

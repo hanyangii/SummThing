@@ -23,7 +23,7 @@ else:
 
 #read from local file
 def read_text(fileName):
-	location = '../SummThing/%s' %fileName
+	location = '../SummThing/data/%s' %fileName
 	with open(location, 'r') as f:
 		doc = f.read().decode('utf-8')
 	f.close()
@@ -44,7 +44,7 @@ def get_tags(text, ntags=50, multiplier=10):
 	return [{ 'color': color(), 'tag': n, 'size': c*multiplier }\
 		for n, c in count.most_common(ntags)]
 
-def draw_cloud(tags, filename, fontname='Noto Sans CJK', size=(800, 600)):
+def draw_cloud(tags, filename, fontname='Noto Sans CJK', size=(1024, 768)):
 	pytagcloud.create_tag_image(tags, filename, fontname=fontname, size=size)
 	webbrowser.open(filename)
 

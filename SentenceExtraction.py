@@ -12,6 +12,7 @@ sys.setdefaultencoding('utf-8')
 
 #Split text file to sentences
 def SplitTextfile(text_file):
+	kkma=Kkma()
 	text_data = text_file.read()
 	output=kkma.sentences(text_data)
 	pprint(output)
@@ -28,7 +29,11 @@ def SentenceExtraction(file_name, topic_words):
 	sentences=SplitTextfile(fp)
 	
 	#make words - sentences matrix
-	score=[0 for in range(len(sentences))]
-	for word in topic_words:
+	score=[0 for i in range(len(sentences))]
+	#for word in topic_words:
 		
 		
+
+	#<PRINT UNICODE>
+	# a = type: unicode
+	# a.encode('utf8') -> 한글로 출력!

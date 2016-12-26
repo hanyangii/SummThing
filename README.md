@@ -20,5 +20,6 @@ $pip install --upgrade lxml
 $brew install homebrew/python/pygame
 $brew install libtiff libjpeg webp littlecms
 $pip install Pillow
+&easy_install regex
 
 Naver D2 FEST Open Source Project

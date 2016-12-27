@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 
 #Split text file to sentences 
 #Extract sentences including topic words.
@@ -14,12 +14,13 @@ sys.setdefaultencoding('utf-8')
 def SplitTextfile(text_file):
 	kkma=Kkma()
 	text_data = text_file.read()
-	output=kkma.sentences(text_data)
-	pprint(output)
+	output=kkma.sentences(text_data) 
+
+	#convert unicode to text
 
 	return output
 
-def SentenceExtraction(file_name, topic_words):
+def SentenceExtract(file_name, topic_words):
 	
 	#file open
 	file_name = "data/흥부와놀부.txt"
@@ -27,13 +28,19 @@ def SentenceExtraction(file_name, topic_words):
 	
 	#split text file to sentences 
 	sentences=SplitTextfile(fp)
+	print sentences[0], sentences[0].encode('utf8'), sentences[0].decode('utf8')
 	
+	topic_words=['흥부', '놀부', '제비']
 	#make words - sentences matrix
 	score=[0 for i in range(len(sentences))]
-	#for word in topic_words:
+	#for word in topic_words
 		
 		
 
 	#<PRINT UNICODE>
 	# a = type: unicode
 	# a.encode('utf8') -> 한글로 출력!
+
+	fp.close()
+
+SentenceExtract(0,0)

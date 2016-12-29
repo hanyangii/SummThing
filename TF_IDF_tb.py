@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/
+
 from __future__ import division, unicode_literals
 import math
 from textblob import TextBlob as tb

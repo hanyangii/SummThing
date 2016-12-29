@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
+#This Class extracts major Nouns using TF-IDF Algorithm 
+
+
+
 from __future__ import division, unicode_literals
 import math
-#from textblob import TextBlob as tb
-#from konlpy.tag import Kkma
-#from konlpy.utils import pprint
 from ExtractNouns import get_nouns
 from ExtractNouns import read_text
 import sys
@@ -32,12 +34,9 @@ class Textdoc:
 
 
 def tf(word, blob):
-#	return blob.words.count(word) / len(blob.words)
-#	print((get_nouns(blob)).count(word), len(get_nouns(blob)))
 	return (get_nouns(blob)).count(word) / len(get_nouns(blob))
 
 def n_containing(word, bloblist):
-#	return sum(1 for blob in bloblist if word in blob.words)
 	return sum(1 for blob in bloblist if word in get_nouns(blob))
 
 def idf(word, bloblist):
@@ -48,6 +47,7 @@ def tfidf(word, blob, bloblist):
 
 def TF_IDF():
 	doc_list=[]
+	#The name of book is written on tran_data.txt
 	TrainFile=open('data/train_data.txt')
 	bloblist=[]
 	while True:

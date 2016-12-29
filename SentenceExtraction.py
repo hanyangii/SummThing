@@ -25,14 +25,14 @@ def SplitTextfile(text_file):
 def SentenceExtract(file_name, topic_words):
 	
 	#File open
-	file_name = "data/소나기.txt"
+	file_name = "data/선녀와나무꾼.txt"
 	fp = open(file_name, 'r')
 	
 	#Split text file to sentences 
 	sentences=SplitTextfile(fp)
 	#print sentences[0], sentences[0].encode('utf8'), sentences[0].decode('utf8')
 	
-	topic_words=['소년', '소녀', '허수아비','조약돌','스웨터']
+	topic_words=['선녀', '나무꾼', '은혜','사냥꾼','저']
 	#Make words - sentences matrix
 	score=[0 for i in range(len(sentences))]
 	for word in topic_words:

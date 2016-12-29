@@ -17,11 +17,16 @@ import sys
 from konlpy.utils import pprint
 from PIL import Image
 import PIL.ImageOps
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 #read from local file
 def read_text(fileName):
 	location = '../SummThing/data/%s.txt' %fileName
+	print fileName
 	with open(location, 'r') as f:
 		doc = f.read().decode('utf-8')
 	f.close()

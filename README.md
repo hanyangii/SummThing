@@ -23,4 +23,7 @@ $pip install Pillow
 $easy_install regex
 $pip install -U textblob
 
+You can run code 
+python main.py
+
 Naver D2 FEST Open Source Project

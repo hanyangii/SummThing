@@ -3,6 +3,11 @@
 from konlpy.utils import pprint
 from konlpy.tag import Hannanum
 import pumsaWord
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 han = Hannanum()
 
 #print(han.analyze(u'본 연구의 목적은 통일된 한국어 품사태그 집합을 설정하는 데 있다.'))

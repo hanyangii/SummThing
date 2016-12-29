@@ -11,50 +11,42 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 #Split text file to sentences
-def SplitTextfile(text_file):
+def SplitTextfile(content):
 	kkma=Kkma()
-	text_data = text_file.read()
+	#text_data = text_file.read()
 	#print text_data
-	output=kkma.sentences(text_data) 
+	output=kkma.sentences(content) 
 	#print output[0]
 
 	#convert unicode to text
 
 	return output
 
-def SentenceExtract(file_name, topic_words):
-	
-	#File open
-	file_name = "data/선녀와나무꾼.txt"
-	fp = open(file_name, 'r')
+def SentenceExtract(file_name, content,topic_words):
 	
 	#Split text file to sentences 
-	sentences=SplitTextfile(fp)
-	#print sentences[0], sentences[0].encode('utf8'), sentences[0].decode('utf8')
+	sentences=SplitTextfile(content)
 	
-	topic_words=['선녀', '나무꾼', '은혜','사냥꾼','저']
 	#Make words - sentences matrix
 	score=[0 for i in range(len(sentences))]
 	for word in topic_words:
 		for i in range(len(sentences)):
-			#print sentences[i], word, sentences[i].count(word)
-			score[i]=score[i]+sentences[i].count(word)
+			score[i]=score[i]+sentences[i].count(word[0])
 
-	#print len(sentences), score
 		
 	#Attatch (sentence, score) and Sorting 
 	for i in range(len(sentences)):
-		sentences[i]=[sentences[i],score[i]]
+		sentences[i]=[sentences[i],score[i],i]
 	
 	sorted_sentences = sorted(sentences, key=lambda l:l[1], reverse=True)
+	topic_sentences = sorted_sentences[0:int(len(sorted_sentences)*0.5)]
+	topic_sentences = sorted(topic_sentences, key=lambda l:l[2])
 
-	for i in range(10):
-		print sorted_sentences[i][0], sorted_sentences[i][1]
+	for i in topic_sentences:
+		print i[2], i[0], i[1]
 
-	#<PRINT UNICODE>
-	# a = type: unicode
-	# a.encode('utf8') -> 한글로 출력!
+	print '\n'
 
-	fp.close()
-
-SentenceExtract(0,0)
+def Extraction(topic_words):
+	for i in topic_words:
+		SentenceExtract(i.title, i.content, i.topic_words)

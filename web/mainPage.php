@@ -9,7 +9,7 @@
 <form method="post" action="writeData.php">
 Title : <input type="text" name="txtTitle"> <br>
 Insert Text <br>
-<textarea rows=45 cols=50
+<textarea rows=25 cols=50
 name=context autofocus></textarea><br>
 <select name="ddmenu">
 <option value="" selected>--select--</option>

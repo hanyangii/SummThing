@@ -1,27 +1,36 @@
-# -*- coding: ms949 -*-
+# -*- coding: utf-8 -*-
+#!/usr/bin/env python
 
 from konlpy.utils import pprint
 
 def Pumsa(words):
     pprint(words)
+    first = words[0][1]
     last = words[len(words) - 1][1] #단어를 형태소 단위로 분리했을 때 마지막 품사
     ans = 0
 
-    #주어
-    if (last == 'jcs' or last == 'jxc'):
+    #S
+    if (last in ['jcs', 'jxc']):
         ans = 1
 
-    #서술어
+    #V
     elif (last == 'ef'):
         ans = 2
+        
+    elif (first in ['pvd','pvg']):
+        ans = 2
 
-    #목적어
+    #O
     elif (last == 'jco'):
         ans = 3
 
-    #보어
+    #C
     elif (last == 'jcc'):
         ans = 4
+	
+	#A
+    elif (last == 'jcm'):
+	    ans = 5
 
     return ans
 

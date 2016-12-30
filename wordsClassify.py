@@ -1,19 +1,17 @@
-# -*- coding: ms949 -*-
+# -*- coding: utf-8 -*-
+#!/usr/bin/env python
 
 from konlpy.utils import pprint
 from konlpy.tag import Hannanum
 import pumsaWord
-import sys
+#import sys
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+#reload(sys)
+#sys.setdefaultencoding('utf-8')
 
 han = Hannanum()
 
-#print(han.analyze(u'본 연구의 목적은 통일된 한국어 품사태그 집합을 설정하는 데 있다.'))
-#konlpy.utils.pprint(han.analyze(u'본 연구의 목적은 통일된 한국어 품사태그 집합을 설정하는 데 있다.'))
-
-sentence = u'이 테스트 문장은 주어와 목적어를 구분하기 위한 샘플이다.'
+sentence = u'aaaaa.'
 result = []
 result = han.analyze(sentence)
 
@@ -42,7 +40,7 @@ for i in range(len(result)):
         bo_eo.append(word)
 
 print('\n**************************')
-print('주어:')
+print('옜:')
 for i in range(len(joo_eo)):
     pprint(joo_eo[i])
 print('**************************')

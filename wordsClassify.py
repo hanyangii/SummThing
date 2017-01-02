@@ -1,58 +1,106 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from collections import Counter
+import urllib
+import random
+import webbrowser
+
+from konlpy.tag import Twitter
+from konlpy.tag import Komoran
+from konlpy.tag import Hannanum
+from konlpy.tag import Kkma
+from lxml import html
+import pytagcloud # requires Korean font support
+import sys
 
 from konlpy.utils import pprint
-from konlpy.tag import Hannanum
-import pumsaWord
-#import sys
+from PIL import Image
+import PIL.ImageOps
+import sys
 
-#reload(sys)
-#sys.setdefaultencoding('utf-8')
-
-han = Hannanum()
-
-sentence = u'aaaaa.'
-result = []
-result = han.analyze(sentence)
-
-joo_eo = []
-sool_eo = []
-mog_eo = []
-bo_eo = []
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
-#pprint(result)
+#read from local file
+def read_text(fileName):
+	location = '../SummThing/data/%s.txt' %fileName
+	print fileName
+	with open(location, 'r') as f:
+		doc = f.read().decode('utf-8')
+	f.close()
+	return doc
 
-for i in range(len(result)):
-    p = pumsaWord.Pumsa(result[i][0])
-    word = pumsaWord.FullWord(result[i][0])
-      
-    if p == 1:  #ÁÖ¾îÀÏ¶§
-        joo_eo.append(word)
+#read from web site
+def get_bill_text(new_url):
+	url = new_url
+	response = urlopen(url).read().decode('utf-8')
+	page = html.fromstring(response)
+	text = page.xpath(".//div[@id='bill-sections']/pre/text()")[0]
+	return text
 
-    elif p == 2: #¼­¼ú¾îÀÏ¶§
-        sool_eo.append(word)
+def get_tags(text, ntags=50, multiplier=10):
+	h = Hannanum()
+	nouns = h.nouns(text)
+	count = Counter(nouns)
+	return [{ 'color': color(), 'tag': n, 'size': c*multiplier }\
+		for n, c in count.most_common(ntags)]
 
-    elif p == 3: #¸ñÀû¾îÀÏ¶§
-        mog_eo.append(word)
+def get_nouns(text, chunk=500, mfv=20):
+#	h = Hannanum()
+#	komoran = Komoran()
+#	kk = Kkma()
+	tt = Twitter()
+#	arr = kk.pos(text)
+	arr = tt.nouns(text)
+#	nngs = []
 
-    elif p == 4: #º¸¾îÀÏ¶§
-        bo_eo.append(word)
+#	for i in range(len(arr)):
+#		if arr[i][1] in ['Noun']: #['NNG', 'NNP']:
+#			nngs.append(arr[i][0])
+#pprint(nngs)		
+	return arr
+#	for i in range(len(arr)/chunk):
+#		nngs = []
+#		for j in range(chunk):
+			
+#			if arr[i*chunk + j][1] in ['NNG', 'NNP']:
+#				nngs.append(arr[i*chunk + j][0])
+	
+#		count = Counter(nngs)
+#		brr = count.most_common(mfv)
+#		pprint(brr)
+#	return brr	
 
-print('\n**************************')
-print('¿¿:')
-for i in range(len(joo_eo)):
-    pprint(joo_eo[i])
-print('**************************')
-print('¼­¼ú¾î:')
-for i in range(len(sool_eo)):
-    pprint(sool_eo[i])
-print('**************************')
-print('¸ñÀû¾î:')
-for i in range(len(mog_eo)):
-    pprint(mog_eo[i])
-print('**************************')
-print('º¸¾î:')
-for i in range(len(bo_eo)):
-    pprint(bo_eo[i])
-        
+def draw_cloud(tags, filename, fontname='Noto Sans CJK', size=(1024, 768)):
+	pytagcloud.create_tag_image(tags, filename, fontname=fontname, size=size)
+	webbrowser.open(filename)
+
+if __name__ == "__main__":
+	if sys.version_info[0] >= 3:
+		urlopen = urllib.request.urlopen
+	else:
+		urlopen = urllib.urlopen
+		r = lambda: random.randint(0,255)
+		color = lambda: (r(), r(), r())
+
+	#####################
+	###if use website ###
+	#####################
+	#text = get_bill_text(bill_num)
+
+
+	#data_name = raw_input("type the name of article to read :")
+	data_name = 'ì†Œë‚˜ê¸°'
+	text = read_text(data_name)
+	#tags = get_tags(text)
+	#print(tags)
+	nouns = get_nouns(text)
+#pprint(nouns)
+
+	#######show image########
+	#draw_cloud(tags, 'wordcloud.png')
+	#drawImage = "wordcloud.png"
+	#im = Image.open(drawImage)
+	#im.show()

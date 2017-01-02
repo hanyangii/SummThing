@@ -33,8 +33,8 @@ def read_text(fileName):
 	return doc
 
 #read from web site
-def get_bill_text(billnum):
-	url = 'http://pokr.kr/bill/%s/text' % billnum
+def get_bill_text(new_url):
+	url = new_url
 	response = urlopen(url).read().decode('utf-8')
 	page = html.fromstring(response)
 	text = page.xpath(".//div[@id='bill-sections']/pre/text()")[0]
@@ -84,17 +84,16 @@ if __name__ == "__main__":
 		urlopen = urllib.urlopen
 		r = lambda: random.randint(0,255)
 		color = lambda: (r(), r(), r())
+
 	#####################
 	###if use website ###
 	#####################
-	#bill_num = '1904880'
 	#text = get_bill_text(bill_num)
 
 
 	#data_name = raw_input("type the name of article to read :")
 	data_name = '소나기'
 	text = read_text(data_name)
-#print(text)
 	#tags = get_tags(text)
 	#print(tags)
 	nouns = get_nouns(text)

@@ -22,4 +22,3 @@ doc = [article.cleaned_text, article1.cleaned_text, article2.cleaned_text]
 TF_IDF_url(doc)
 
 
-

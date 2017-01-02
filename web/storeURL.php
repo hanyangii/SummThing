@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><link rel="stylesheet" type="text/css" href="design.css">
 <meta charset="utf-8">
+<a href=./MainPage.php><div class="head"><h1>SummThing</h1></div></a>
 <title>Store URL</title>
 </head>
 <body>
 
-<form method="post">
+<br>
+
+<form method="post"><div style="text-align:center">
 	url : 
-	<input type="text" id="url" name="url"> <br>
+	<input type="text" size = 100 id="url" name="url"><br><br>
 	<button name="store_but">Store</button>
 </form>
 

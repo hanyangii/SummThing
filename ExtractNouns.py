@@ -3,13 +3,11 @@
 
 from collections import Counter
 import urllib
+from urllib import urlopen
 import random
 import webbrowser
 
-from konlpy.tag import Twitter
-from konlpy.tag import Komoran
 from konlpy.tag import Hannanum
-from konlpy.tag import Kkma
 from lxml import html
 import pytagcloud # requires Korean font support
 import sys

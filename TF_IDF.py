@@ -10,6 +10,11 @@ from __future__ import division, unicode_literals
 import math
 from ExtractNouns import *
 import sys
+from konlpy.utils import pprint
+
+from goose import Goose
+from goose.text import StopWordsKorean
+
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -83,24 +88,35 @@ def TF_IDF():
 	
 	return doc_list
 
-def TF_IDF_url(doc_list):
-	#doc_list=[]
+def TF_IDF_url():
+	doc_list=[]
+	bloblist = []
 	#The name of book is written on tran_data.txt
-	#TrainFile=open('data/train_data.txt')
-	#doc1 = doc_list[0]
-	#doc2 = doc_list[1]
-	#doc3 = doc_list[2]
+	f = open('data/train_data.txt')
+	g = Goose({'stopwords_class':StopWordsKorean})
 	
-	#bloblist=[doc1, doc2, doc3]
-	for i, blob in enumerate(doc_list):
+	lines = f.readlines()
+	f.close()
+
+	for line in lines:
+		bloblist.append(g.extract(url=line).cleaned_text)
+
+	#article = g.extract(url=url)
+	#article1 = g.extract(url=url1)
+	#article2 = g.extract(url=url2)
+
+	#bloblist = [article1.cleaned_text, article2.cleaned_text, article3.cleaned_text]
+	
+	t=0
+	for i, blob in enumerate(bloblist):
 		pprint(get_nouns(blob))
 		print("Top words in document {}".format(i + 1))
-		scores = {word: tfidf(word, blob, doc_list) for word in get_nouns(blob)}
+		scores = {word: tfidf(word, blob, bloblist) for word in get_nouns(blob)}
 		sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 		for word, score in sorted_words[:5]:
-			#doc_list[t].add_word(word, round(score, 5))
-			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
+			doc_list[t].add_word(word, round(score, 5))
+			#print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
+		t=t+1
 	
-	#return doc_list
-#if __name__=='__main__':
+	return doc_list
 

@@ -14,7 +14,7 @@ function coloringWord($str, $color) {
 	return "<a href='http://dic.naver.com/search.nhn?sLn=kr&&searchOption=&isOnlyViewEE=N&query=".$str."'>
 		<span style=\"color:".$color."\">".$str."</span></a>";
 }
-$colorList = array("red", "blue", "green", "yellow", "pink");
+$colorList = array("red", "blue", "green", "purple", "pink");
 
 
 #   Words text File Warning 
@@ -29,7 +29,7 @@ $row = 0;
 $wf = fopen($wordF, "r") or die("Failed to load file.");
 
 echo "Key words<br>";
-while(!feof($wf)){
+while(!feof($wf)){ //check the file's end
 	$keys[$row++] = trim(fgets($wf));
 }
 for($row=0; $row < count($keys)-1; $row++){
@@ -40,7 +40,7 @@ echo "<br><br>";
 
 
 $tf = fopen($textF, "r") or die("Failed to load file.");
-while(!feof($tf)){
+while(!feof($tf)){//check the file's end
 	$buffer = fgets($tf)."<br>";
 	if($buffer == "\r\n<br>") continue;
 	
@@ -55,7 +55,6 @@ while(!feof($tf)){
 //echo$buffer;
 fclose($tf);
 fclose($wf);
-
 
 
 ?>

@@ -92,15 +92,21 @@ def TF_IDF_url(doc_list):
 	#doc3 = doc_list[2]
 	
 	#bloblist=[doc1, doc2, doc3]
+	words=[]
 	for i, blob in enumerate(doc_list):
 		#pprint(get_nouns(blob))
 		nouns=get_nouns(blob)
+		topic_words=[]
 		print("Top words in document {}".format(i + 1))
 		scores = {word: tfidf(word, blob, doc_list) for word in nouns}
 		sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 		for word, score in sorted_words[:5]:
 			#doc_list[t].add_word(word, round(score, 5))
 			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
+			topic_words.append(word)
+		words.append(topic_words)
+	
+	return words
 	
 	#return doc_list
 #if __name__=='__main__':

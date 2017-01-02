@@ -11,7 +11,8 @@
 //function euc2utf($str) { return iconv("cp949","UTF-8//IGNORE", $str); }
 
 function coloringWord($str, $color) {
-	return "<span style=\"color:".$color."\">".$str."</span>";
+	return "<a href='http://dic.naver.com/search.nhn?sLn=kr&&searchOption=&isOnlyViewEE=N&query=".$str."'>
+		<span style=\"color:".$color."\">".$str."</span></a>";
 }
 $colorList = array("red", "blue", "green", "yellow", "pink");
 
@@ -32,7 +33,6 @@ while(!feof($wf)){
 	$keys[$row++] = trim(fgets($wf));
 }
 for($row=0; $row < count($keys)-1; $row++){
-	echo $keys[$row]."<br>";
 	$colorKeys[$row] = coloringWord($keys[$row], $colorList[$row]);
 	echo $colorKeys[$row]."<br>";
 }

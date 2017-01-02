@@ -8,5 +8,5 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 #train every train data
-topic_words = TF_IDF()
+topic_words = TF_IDF_url()
 Extraction(topic_words)

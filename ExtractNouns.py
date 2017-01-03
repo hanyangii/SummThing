@@ -54,7 +54,7 @@ def get_nouns(text, chunk=500, mfv=20):
 #		if arr[i][1] in ['Noun']: #['NNG', 'NNP']:
 #			nngs.append(arr[i][0])
 #pprint(nngs)		
-	return list(set(arr))
+	return arr
 #	for i in range(len(arr)/chunk):
 #		nngs = []
 #		for j in range(chunk):
@@ -67,6 +67,10 @@ def get_nouns(text, chunk=500, mfv=20):
 #		pprint(brr)
 #	return brr	
 
+def noun_list(text):
+	tt=Twitter()
+	arr=tt.nouns(text)
+	return list(set(arr))
 
 def draw_cloud(tags, filename, fontname='Noto Sans CJK', size=(1024, 768)):
 	pytagcloud.create_tag_image(tags, filename, fontname=fontname, size=size)

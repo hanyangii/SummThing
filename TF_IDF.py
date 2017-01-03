@@ -36,11 +36,13 @@ class Textdoc:
 
 
 def tf(word, blob):
-	return (get_nouns(blob)).count(word) / len(get_nouns(blob))
+	noun = get_nouns(blob)
+	return float(noun.count(word)) / float(len(noun))
 
 def n_containing(word, bloblist):
 	#print sum(1 for blob in bloblist if word in get_nouns(blob))
-	return sum(1 for blob in bloblist if word in get_nouns(blob))
+	nouns=noun_list(blob)
+	return sum(1 for blob in bloblist if word in nouns)
 
 def idf(word, bloblist):
 	return math.log(len(bloblist) / (1 + n_containing(word, bloblist)))

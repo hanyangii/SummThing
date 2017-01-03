@@ -6,26 +6,29 @@
 <a href=./storeURL.php><h1>SummThing</h1></a>
 <title>Select Type</title>
 </head>
-
+<br>
 <form method="post"><div style="text-align:center">
 	<input type="text" size = 100 id="url" 
 	 value = <?php $url = $_POST["url"]; echo $url;?> 
 	 name="url" style="font-size: 10pt">
+
 	<button name="store_but">url입력</button>	
 </form>
+<br><br><br>
 
-<br><br>
+<div align="center">
+<table class=maintable>
+<tr><td>
+	<a href=./displayText.php>요약문보기</a>
+</td><td>
+	<a href=./showCloud.php>워드클라우드보기</a>
+</td><td>
+	<a href=./showCloud.php>단어위치보기</a>
+</td><td>
+	<a href=./graphTest.html>그래프보기</a>
+</td></tr>
 
-<form method="post" action="displayText.php">
-	<input type="submit" value="요약문보기" >
-</form>
-<form method="post" action="showCloud.php">
-	<input type="submit" value="워드클라우드보기" >
-</form>
-<form method="post" action="showCloud.php">
-	<input type="submit" value="워드클라우드보기" >
-</form>
-
+</div>
 
 <?php 
 

@@ -20,7 +20,7 @@ def get_bill_text():
 	doc_list= []
 	bloblist = []
 	#The name of book is written on tran_data.txt
-	f = open('../Summthing/data/url.txt')
+	f = open('../data/url.txt')
 	g = Goose({'stopwords_class':StopWordsKorean})
 	
 	lines = f.readlines()

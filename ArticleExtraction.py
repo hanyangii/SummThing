@@ -10,6 +10,7 @@ import numpy as np
 import sys
 import math
 
+from Collocation import *
 from TF_IDF import *
 from SentenceExtraction import *
 
@@ -24,31 +25,14 @@ article = g.extract(url=url).cleaned_text
 
 #merge collocation words
 nouns = get_nouns(article)
-measures = collocations.BigramAssocMeasures()
-tagged_words = Kkma().pos(article)
-finder = collocations.BigramCollocationFinder.from_words(tagged_words)
-score_words = finder.score_ngrams(measures.likelihood_ratio)
-
-find_words = ['NNG','NNB','NNP']
-collocs=[]
-word_pairs=[]
-for pair in score_words:
-	if pair[0][0][1] in find_words and pair[0][1][1] in find_words:
-		if pair[1] > 25.0 : 
-			collocs.append(pair)
-			pp = [pair[0][0][0],pair[0][1][0]]
-			word_pairs.append(pp)
+word_pairs = get_collocation_pairs(article, 'data/PosData.npy')
 
 #Calcurate TF-IDF
 all_dic = np.load('data/NounsCount.npy').tolist()
 tfidf = []
 for noun in nouns:
-	if noun in all_dic:
-		n_contains = all_dic[noun]
-		idf_score = math.log(len(n_contains)+1)/(2+sum(1 for i in n_contains if i>0))
-	else:
-		a = list(all_dic.keys())
-		idf_score = math.log(len(all_dic[a[1]])+1)/2
+	idf_score = trained_idf(noun,all_dic)
+
 	tf_score = tf(noun, article)
 	new_pair = [noun,tf_score*idf_score,idf_score]
 	tfidf.append(new_pair)
@@ -76,12 +60,8 @@ for i in range(len(save_words)):
 			collocation = [[add_pair[0]+add_pair[1]],[add_pair[0]+' '+add_pair[1]]]
 			
 			for col in collocation:
-				if col[0] in all_dic:
-					n_contains = all_dic[col[0]]
-					idf_score = math.log(len(n_contains)+1)/(2+sum(1 for i in n_contains if i>0))
-				else:
-					a = list(all_dic.keys())
-					idf_score = math.log(len(all_dic[a[1]])+1)/2
+				idf_score = trained_idf(col[0],all_dic)
+
 				gnd = get_nouns_duplicate(article)
 				n_tf = float(article.count(col[0]))/float(len(gnd))
 				col.append(n_tf*idf_score)

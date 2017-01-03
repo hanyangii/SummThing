@@ -37,6 +37,15 @@ def tf(word, blob):
 	gnd = get_nouns_duplicate(blob)
 	return gnd.count(word) / len(gnd)
 
+def trained_idf(word,all_dic):
+	if word in all_dic:
+		n_contains = all_dic[word]
+		idf_score = math.log(len(n_contains) + 1) / (2 + sum(1 for i in n_contains if i > 0))
+	else:
+		a = list(all_dic.keys())
+		idf_score = math.log(len(all_dic[a[1]]) + 1) / 2
+	return idf_score
+
 def n_containing(word, bloblist):
 	return sum(1 for blob in bloblist if word in get_nouns(blob))
 
@@ -61,17 +70,6 @@ def TF_IDF():
 		doc_list.append(doc_class)
 		bloblist.append(doc_class.content)
 
-	"""
-	document_name1 = '말안듣는청개구리s'
-	document_name2 = '선녀와나무꾼s'
-	document_name3 = '해와달이된오누이s'
-
-	document1 = read_text(document_name1)
-	document2 = read_text(document_name2)
-	document3 = read_text(document_name3)
-
-	bloblist = [document1, document2, document3]
-	"""
 	t=0
 	for i, blob in enumerate(bloblist):
 	#pprint(get_nouns(blob))

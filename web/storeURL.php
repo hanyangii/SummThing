@@ -31,7 +31,7 @@ if(isset($_POST["store_but"])){
 		echo "<script>alert(\"saved\");</script>";
 	}
 	else{
-		echo "Can't not open the ".$filename."<br>";
+		echo "<script>alert(\"can't not open\");</script>";
 	}
 }
 ?>

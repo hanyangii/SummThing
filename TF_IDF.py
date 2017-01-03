@@ -103,11 +103,7 @@ def TF_IDF_url():
 		bloblist.append(doc_class.content)	
 #		print doc_class.content
 	
-
 	t=0
-
-	blob_nouns = []
-
 	for i, blob in enumerate(bloblist):
 		#pprint(get_nouns(blob))
 		print("Top words in document {}".format(i + 1))

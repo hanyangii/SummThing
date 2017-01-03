@@ -6,12 +6,14 @@
 <title>Store URL</title>
 </head>
 <body>
-<br>
+<br><br>
 
-<form method="post" action="displayText.php"><div style="text-align:center"><br>
+<form method="post"><div style="text-align:center">
 	<input type="text" size = 100 text-color = "gray" value = "url 입력" onclick="this.value = ''" id="url" name="url" style="color:gray ; font-size: 10pt">
-	<button name="store_but">summary</button>
-
+	<button name="store_but">url입력</button>	
+</form>
+<form method="post" action="displayText.php">
+	<input type="submit" value="결과보기" >
 </form>
 
 <?php 
@@ -19,25 +21,20 @@
 if(isset($_POST["store_but"])){
 	$filename = "../data/url.txt";
 
-	if(file_exists($filename)){
-		unlink($filename);
-	}
-
 	// Open file with write option.
-	if(($handle = fopen($filename, "c")) !== FALSE){
+	if(($handle = fopen($filename, "w")) !== FALSE){
 		// String text = "http://~~";
 		$text = $_POST["url"];
 		$text .= "\r\n";
 		fwrite($handle, $text);
 		fclose($handle);
-//		echo "<script>alert(\"saved\");</script>";
+		echo "<script>alert(\"saved\");</script>";
 	}
 	else{
 		echo "Can't not open the ".$filename."<br>";
 	}
 }
 ?>
-
 
 
 </body>

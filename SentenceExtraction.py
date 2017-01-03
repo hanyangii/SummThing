@@ -7,6 +7,7 @@ import sys
 from konlpy.tag import Kkma
 from konlpy.utils import pprint
 import nltk.data
+import re
 
 
 reload(sys)
@@ -14,11 +15,13 @@ sys.setdefaultencoding('utf-8')
 
 #Split text file to sentences
 def SplitTextfile(content):
-	tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 	
 	#kkma=Kkma()
 	#output=kkma.sentences(content) 
 	#print output[0]
+
+	content = remove_interviewer(content)
+	content = content.replace('\n', '')
 	content = content.replace('다.','다.^^^' )
 	output = content.split('^^^')
 #	print '\n-----\n'.join(output)
@@ -26,6 +29,8 @@ def SplitTextfile(content):
 
 	#convert unicode to text
 	return output
+
+
 
 def SentenceExtract(file_name, content,topic_words):
 	
@@ -55,3 +60,24 @@ def SentenceExtract(file_name, content,topic_words):
 def Extraction(topic_words):
 	for i in topic_words:
 		SentenceExtract(i.title, i.content, i.topic_words)
+
+def remove_interviewer(sentence):
+
+	sentence_matched1 = re.findall(r".*[\=].*[\=]",sentence)
+#	print sentence_matched1
+	if sentence_matched1 != None:
+#		print "1"
+		#(서울=연합뉴스) 김아람 기자= 제거
+		sentence = re.sub(r".*[\=].*[\=]", r"", sentence)
+	
+	sentence_matched2 = re.findall(r"[\[].*[\]]",sentence)
+	if sentence_matched2 != None :
+#		print "2"
+		#[스포츠 조선 최보란 기자] 제거
+		sentence = re.sub(r"[\[].*[\]]", r"",sentence)
+
+	return sentence
+
+if __name__ == "__main__":
+	remove_interviewer('(Seoul=news) interview= remove')
+	

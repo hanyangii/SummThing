@@ -11,8 +11,6 @@ from ExtractNouns import *
 import sys
 from goose import Goose
 from goose.text import StopWordsKorean
-import time
-
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -117,12 +115,12 @@ def TF_IDF_url():
 		sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 		for word, score in sorted_words[:5]:
 			doc_list[t].add_word(word, round(score, 5))
-			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
+#			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
 		t=t+1
 	
 	return doc_list
 
 
+
 if __name__ == "__main__":
 	TF_IDF_url()
-

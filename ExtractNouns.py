@@ -7,7 +7,7 @@ from urllib import urlopen
 import random
 import webbrowser
 
-from konlpy.tag import Hannanum
+from konlpy.tag import Twitter
 from lxml import html
 import pytagcloud # requires Korean font support
 import sys
@@ -46,11 +46,7 @@ def get_tags(text, ntags=50, multiplier=10):
 		for n, c in count.most_common(ntags)]
 
 def get_nouns(text, chunk=500, mfv=20):
-#	h = Hannanum()
-#	komoran = Komoran()
-#	kk = Kkma()
 	tt = Twitter()
-#	arr = kk.pos(text)
 	arr = tt.nouns(text)
 #	nngs = []
 
@@ -58,7 +54,7 @@ def get_nouns(text, chunk=500, mfv=20):
 #		if arr[i][1] in ['Noun']: #['NNG', 'NNP']:
 #			nngs.append(arr[i][0])
 #pprint(nngs)		
-	return arr
+	return list(set(arr))
 #	for i in range(len(arr)/chunk):
 #		nngs = []
 #		for j in range(chunk):
@@ -71,18 +67,20 @@ def get_nouns(text, chunk=500, mfv=20):
 #		pprint(brr)
 #	return brr	
 
+
 def draw_cloud(tags, filename, fontname='Noto Sans CJK', size=(1024, 768)):
 	pytagcloud.create_tag_image(tags, filename, fontname=fontname, size=size)
 	webbrowser.open(filename)
 
 if __name__ == "__main__":
+	"""
 	if sys.version_info[0] >= 3:
 		urlopen = urllib.request.urlopen
 	else:
 		urlopen = urllib.urlopen
 		r = lambda: random.randint(0,255)
 		color = lambda: (r(), r(), r())
-
+	"""
 	#####################
 	###if use website ###
 	#####################

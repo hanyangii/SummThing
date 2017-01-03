@@ -91,7 +91,7 @@ def TF_IDF_url():
 	doc_list= []
 	bloblist = []
 	#The name of book is written on tran_data.txt
-	f = open('data/train_data1.txt')
+	f = open('data/train_data2.txt')
 	g = Goose({'stopwords_class':StopWordsKorean})
 	
 	lines = f.readlines()
@@ -103,16 +103,21 @@ def TF_IDF_url():
 		doc_class.save_content(g.extract(url=line).cleaned_text)
 		doc_list.append(doc_class)
 		bloblist.append(doc_class.content)	
+#		print doc_class.content
+	
 
 	t=0
+
+	blob_nouns = []
+
 	for i, blob in enumerate(bloblist):
 		#pprint(get_nouns(blob))
 		print("Top words in document {}".format(i + 1))
-		scores = {word: tfidf(word, blob, bloblist) for word in get_nouns(blob)}
+		scores = {word: tfidf(word, blob, bloblist ) for word in get_nouns(blob)}
 		sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 		for word, score in sorted_words[:5]:
 			doc_list[t].add_word(word, round(score, 5))
-			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
+#			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
 		t=t+1
 	
 	return doc_list

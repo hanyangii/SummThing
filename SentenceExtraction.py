@@ -3,10 +3,11 @@
 #Split text file to sentences 
 #Extract sentences including topic words.
 
-import sys
 from konlpy.tag import Kkma
 from konlpy.utils import pprint
+
 import nltk.data
+import sys
 import re
 
 
@@ -16,18 +17,12 @@ sys.setdefaultencoding('utf-8')
 #Split text file to sentences
 def SplitTextfile(content):
 	
-	#kkma=Kkma()
-	#output=kkma.sentences(content) 
-	#print output[0]
 
 	content = remove_interviewer(content)
 	content = content.replace('\n', '')
 	content = content.replace('다.','다.^^^' )
 	output = content.split('^^^')
-#	print '\n-----\n'.join(output)
-#	output = join(tokenizer.tokenize(content))
 
-	#convert unicode to text
 	return output
 
 

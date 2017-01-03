@@ -59,7 +59,7 @@ def get_nouns(text, chunk=500, mfv=20):
 #		if arr[i][1] in ['Noun']: #['NNG', 'NNP']:
 #			nngs.append(arr[i][0])
 #pprint(nngs)		
-	return arr
+	return list(set(arr))
 #	for i in range(len(arr)/chunk):
 #		nngs = []
 #		for j in range(chunk):

@@ -1,9 +1,11 @@
 
 <html>
-<head>
+<head><link rel="stylesheet" type="text/css" href="design.css">
 <meta charset="utf-8">
+<a href=./storeURL.php><div class="head"><h1>SummThing</h1></div></a>
 <title>Idong</title>
 </head>
+
 <body>
 
 <?php
@@ -12,9 +14,9 @@
 
 function coloringWord($str, $color) {
 	return "<a href='http://dic.naver.com/search.nhn?sLn=kr&&searchOption=&isOnlyViewEE=N&query=".$str."'>
-		<span style=\"color:".$color."\">".$str."</span></a>";
+		<span style=\"color:".$color."\" >".$str."</span></a>";
 }
-$colorList = array("red", "blue", "green", "purple", "pink");
+$colorList = array("ff0033", "#0099ff", "orange", "009933", "grey");
 
 
 #   Words text File Warning 
@@ -27,6 +29,8 @@ $textF = "../data/writeTest.txt";
 //echo$buffer;
 $row = 0;
 $wf = fopen($wordF, "r") or die("Failed to load file.");
+echo "<div class=section>";
+echo "<table class=maintable>";
 
 echo "Key words<br>";
 while(!feof($wf)){ //check the file's end
@@ -34,20 +38,18 @@ while(!feof($wf)){ //check the file's end
 }
 for($row=0; $row < count($keys)-1; $row++){
 	$colorKeys[$row] = coloringWord($keys[$row], $colorList[$row]);
-	echo $colorKeys[$row]."<br>";
+	echo "<tt>$colorKeys[$row]</tt>";
 }
-echo "<br><br>";
+echo "<br><br><br>";
 
 
 $tf = fopen($textF, "r") or die("Failed to load file.");
 while(!feof($tf)){//check the file's end
 	$buffer = fgets($tf)."<br>";
-	if($buffer == "\r\n<br>") continue;
+	if($buffer == "\r\n") continue;
 	
 	$newbuffer = str_replace($keys, $colorKeys, $buffer);
-	echo "#".$newbuffer;
-	
-	
+	echo "<tt>#$newbuffer</tt>";
 	echo "<br>";
 }
 

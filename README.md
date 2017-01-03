@@ -11,6 +11,11 @@ $apt-get install python-pygame
 $sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms1-dev libwebp-dev
 $pip install Pillow
 
+-----------------------------------
+How to install goose-extractor
+$cd SummThing
+$pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
+-----------------------------------
 
 >mac
 $pip install JPype1

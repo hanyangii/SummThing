@@ -5,13 +5,13 @@
 #This Class extracts major Nouns using TF-IDF Algorithm 
 
 
-
 from __future__ import division, unicode_literals
 import math
 from ExtractNouns import *
 import sys
 from goose import Goose
 from goose.text import StopWordsKorean
+import time
 
 
 reload(sys)
@@ -36,10 +36,10 @@ class Textdoc:
 
 
 def tf(word, blob):
-	return (get_nouns(blob)).count(word) / len(get_nouns(blob))
+	gnd = get_nouns_duplicate(blob)
+	return gnd.count(word) / len(gnd)
 
 def n_containing(word, bloblist):
-	#print sum(1 for blob in bloblist if word in get_nouns(blob))
 	return sum(1 for blob in bloblist if word in get_nouns(blob))
 
 def idf(word, bloblist):
@@ -82,7 +82,7 @@ def TF_IDF():
 		sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 		for word, score in sorted_words[:5]:
 			doc_list[t].add_word(word, round(score, 5))
-			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
+#			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
 		t=t+1
 
 	return doc_list
@@ -91,7 +91,7 @@ def TF_IDF_url():
 	doc_list= []
 	bloblist = []
 	#The name of book is written on tran_data.txt
-	f = open('data/train_data2.txt')
+	f = open('data/train_data1.txt')
 	g = Goose({'stopwords_class':StopWordsKorean})
 	
 	lines = f.readlines()
@@ -117,8 +117,12 @@ def TF_IDF_url():
 		sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 		for word, score in sorted_words[:5]:
 			doc_list[t].add_word(word, round(score, 5))
-#			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
+			print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
 		t=t+1
 	
 	return doc_list
+
+
+if __name__ == "__main__":
+	TF_IDF_url()
 

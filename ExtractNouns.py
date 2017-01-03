@@ -45,6 +45,11 @@ def get_tags(text, ntags=50, multiplier=10):
 	return [{ 'color': color(), 'tag': n, 'size': c*multiplier }\
 		for n, c in count.most_common(ntags)]
 
+def get_nouns_duplicate(text):
+	tt = Twitter()
+	arr = tt.nouns(text)
+	return arr
+
 def get_nouns(text, chunk=500, mfv=20):
 	tt = Twitter()
 	arr = tt.nouns(text)
@@ -86,17 +91,16 @@ if __name__ == "__main__":
 	#####################
 	#text = get_bill_text(bill_num)
 
-
-	#data_name = raw_input("type the name of article to read :")
 	data_name = '소나기'
 	text = read_text(data_name)
 	#tags = get_tags(text)
 	#print(tags)
 	nouns = get_nouns(text)
-#pprint(nouns)
-
+	#pprint(nouns)
+	"""
 	#######show image########
-	#draw_cloud(tags, 'wordcloud.png')
-	#drawImage = "wordcloud.png"
-	#im = Image.open(drawImage)
-	#im.show()
+	draw_cloud(tags, 'wordcloud.png')
+	drawImage = "wordcloud.png"
+	im = Image.open(drawImage)
+	im.show()
+	"""

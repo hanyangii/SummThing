@@ -6,20 +6,25 @@
 import sys
 from konlpy.tag import Kkma
 from konlpy.utils import pprint
+import nltk.data
+
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 #Split text file to sentences
 def SplitTextfile(content):
-	kkma=Kkma()
-	#text_data = text_file.read()
-	#print text_data
-	output=kkma.sentences(content) 
+	tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+	
+	#kkma=Kkma()
+	#output=kkma.sentences(content) 
 	#print output[0]
+	content = content.replace('다.','다.^^^' )
+	output = content.split('^^^')
+#	print '\n-----\n'.join(output)
+#	output = join(tokenizer.tokenize(content))
 
 	#convert unicode to text
-
 	return output
 
 def SentenceExtract(file_name, content,topic_words):

@@ -21,6 +21,13 @@ class Textdoc:
 		self.title=''
 		self.topic_words=[]
 		self.content=''
+		self.date=''
+		self.url=''
+
+	def save_article(self, title, url, date):
+		self.title=title
+		self.date=date
+		self.url=url
 	
 	def save_title(self,title):
 		self.title=title
@@ -31,6 +38,9 @@ class Textdoc:
 	
 	def save_content(self,content):
 		self.content=content
+	
+	def pop_article(self):
+		return self.title, self.date, self.url
 
 
 def tf(word, blob):

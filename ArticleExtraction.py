@@ -17,11 +17,15 @@ from SentenceExtraction import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-#Extract an article from url
-url = open('data/url.txt','r').read()
-g = Goose({'stopwords_class':StopWordsKorean})
+#Extract article from url
+def article_from_url(url):
+	g = Goose({'stopwords_class':StopWordsKorean})
+	return g.extract(url=url)
 
-article = g.extract(url=url).cleaned_text
+url = open('data/url.txt','r').read()
+
+article = article_from_url(url)
+article = article.cleaned_text
 
 #merge collocation words
 nouns = get_nouns(article)

@@ -11,10 +11,17 @@ sys.setdefaultencoding('utf-8')
 
 URL_PREFIX = "http://news.naver.com/main/ranking/popularDay.nhn?rankingType=popular_day&date="
 
-#Crawling URLs from NAVER news pages
+
+#Crawling source from NAVER news pages
+def get_source(url):
+	source=urllib.urlopen(url)
+	soup = BeautifulSoup(source,'lxml',from_encoding='utf-8')
+
+	return soup
+
+#Get popular URLs from source
 def get_link(access_url):
-    source_from_url = urllib.urlopen(access_url)
-    soup = BeautifulSoup(source_from_url, 'lxml', from_encoding='utf-8')
+    soup = get_source(access_url)
     links=[]
     for article in soup.find_all('dt'):
         tit_link = article.select('a')

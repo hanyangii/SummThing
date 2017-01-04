@@ -19,6 +19,8 @@ SummThing은 다음과 같은 운영체제를 지원합니다.
 
 SummThing은 다음과 같은 환경에서 구동됩니다. 
 - Python  2.7.x 이상
+- PHP 5.6
+- Apache 2.4 
 
 ## Installaion(Ubuntu)
 	```bash
@@ -42,6 +44,9 @@ SummThing은 다음과 같은 환경에서 구동됩니다.
 	$pip install Pillow
 	$easy_install regex
 	$pip install -U textblob
+
+	$cd SummThing
+	$pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
 	```
 
 Naver D2 FEST Open Source Project

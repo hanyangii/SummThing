@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from konlpy.tag import Twitter
+from konlpy.tag import Mecab
 from konlpy.utils import pprint
 import sys
 
@@ -19,13 +19,13 @@ def read_text(fileName):
 	return doc
 
 def get_nouns_duplicate(text):
-	tt = Twitter()
-	arr = tt.nouns(text)
+	mecab = Mecab()
+	arr = mecab.nouns(text)
 	return arr
 
 def get_nouns(text, chunk=500, mfv=20):
-	tt = Twitter()
-	arr = tt.nouns(text)
+	mecab = Mecab()
+	arr = mecab.nouns(text)
 	return list(set(arr))
 
 #	for i in range(len(arr)/chunk):

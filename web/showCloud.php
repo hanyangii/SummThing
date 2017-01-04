@@ -10,8 +10,25 @@
 
 
 <?php 
-	$command = "/usr/local/bin/python wordCloud.py 2>&1";
-	$pid = popen( $command,"r");
+
+	// If store button is clicked -> function call
+	$filename = "../wordcloud.png";
+
+	// Open file with write option.
+	if(($handle = fopen($filename, "w")) !== FALSE){
+	//	fwrite($handle, $text);
+		echo "created<br>";
+	}
+	else{
+		echo "can't not create<br>";
+	}
+	exec('chmod 777 ../wordcloud.png', $output);
+	while(list($key, $val)=each($output)){
+		echo $key."=".$val."\n";
+	}
+	
+	$command = "/usr/local/bin/python ../wordCloud.py 2>&1";
+    $pid = popen( $command,"r");
 	while( !feof( $pid ) )
 	{
 		 echo fread($pid, 256);
@@ -20,9 +37,10 @@
 		 usleep(100000);
 	}
 	pclose($pid);
-
+	fclose($handle);
+	
 ?>
-<!--
+
 <body>
 <br><br>
 <div style="text-align: center">
@@ -31,5 +49,5 @@
 <br><br><br>
 
 </body>
--->
+
 </html>

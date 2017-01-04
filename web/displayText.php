@@ -24,11 +24,55 @@ $colorList = array("ff0033", "#0099ff", "orange", "009933", "grey");
 #   Words text File Warning 
 #   : It should be ended with "\r\n" << blank line.
 
-//$filename = "../data/".$_POST["txtTitle"].".txt";
+//Create text files
 $wordF = "../data/writeWord.txt";
 $textF = "../data/writeTest.txt";
 
-//echo$buffer;
+// Open file with write option.
+if(($handle = fopen($wordF, "w")) !== FALSE){
+//	fwrite($handle, $text);
+	echo "writeWord.txt created<br>";
+}
+else{
+	echo "writeWord.txt can't not create<br>";
+}
+// Open file with write option.
+if(($handle = fopen($textF, "w")) !== FALSE){
+//	fwrite($handle, $text);
+	echo "writeTest.txt created<br>";
+}
+else{
+	echo "writeWord.txt can't not create<br>";
+}
+
+
+//권한 설정
+exec('chmod 777 '.$wordF, $output);
+while(list($key, $val)=each($output)){
+	echo $key."=".$val."\n";
+}
+exec('chmod 777 '.$textF, $output);
+while(list($key, $val)=each($output)){
+	echo $key."=".$val."\n";
+}
+
+
+//python 실행
+$command = "/usr/local/bin/python ../ArticleExtraction.py 2>&1";
+$pid = popen( $command,"r");
+while( !feof( $pid ) )
+{
+	 echo fread($pid, 256);
+	 flush();
+	 ob_flush();
+	 usleep(100000);
+}
+pclose($pid);
+fclose($handle);
+
+
+
+//print key words 
 $row = 0;
 $wf = fopen($wordF, "r") or die("Failed to load file.");
 echo "<div class=section>";
@@ -44,6 +88,8 @@ for($row=0; $row < count($keys)-1; $row++){
 echo "<br><br><br>";
 
 
+
+//print summarized contents
 $tf = fopen($textF, "r") or die("Failed to load file.");
 while(!feof($tf)){//check the file's end
 	$buffer = fgets($tf)."<br>";
@@ -53,7 +99,6 @@ while(!feof($tf)){//check the file's end
 	echo "<tt>#$newbuffer</tt>";
 	echo "<br>";
 }
-
 
 //echo$buffer;
 fclose($tf);

@@ -31,6 +31,7 @@ def search_news(word_list):
 		search_line=search_line+'+'
 	
 	url = GOOGLE_PREFIX+search_line+GOOGLE_POSTFIX
+	print url
 	soup = get_source(url)
 	article_link =[]
 
@@ -39,7 +40,7 @@ def search_news(word_list):
 		if(len(tit_link)>0):
 			link = tit_link[0]['href']
 		#Extract Article
-
+		print link
 		news=newspaper.Article(link,language='ko')
 		news.download()
 		try:
@@ -48,6 +49,7 @@ def search_news(word_list):
 			continue
 
 		title = news.title
+		print title
 		date = news.publish_date
 		if not date:
 			date = datetime.date(0001,01,01)

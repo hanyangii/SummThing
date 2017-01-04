@@ -19,11 +19,21 @@ os.environ['PYTHON_EGG_CACHE'] = '/Users/jeongjiwon'
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+<<<<<<< HEAD
 #Extract an article from url
 url = open('../data/url.txt','r').read()
 g = Goose({'stopwords_class':StopWordsKorean})
+=======
+#Extract article from url
+def article_from_url(url):
+	g = Goose({'stopwords_class':StopWordsKorean})
+	return g.extract(url=url)
 
-article = g.extract(url=url).cleaned_text
+url = open('data/url.txt','r').read()
+>>>>>>> b9a5b3eecc181a4a8fc036d91a869620bad0d94d
+
+article = article_from_url(url)
+article = article.cleaned_text
 
 #merge collocation words
 nouns = get_nouns(article)

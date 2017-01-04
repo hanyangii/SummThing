@@ -81,9 +81,10 @@ for i in range(len(save_words)):
 sentences = SplitTextfile(article)
 score= [0 for i in range(len(sentences))]
 
-pprint(topic_words)
+WordFile = open('data/writeWord.txt','w')
 
 for word in topic_words:
+	WordFile.write(word[0]+'\n')
 	for j in range(len(sentences)):
 		score[j]=score[j]+sentences[j].count(word[0])*word[1]
 
@@ -94,7 +95,10 @@ sorted_sentences = sorted(sentences, key=lambda l:l[1], reverse=True)
 topic_sentences = sorted_sentences[:5]
 topic_sentences = sorted(topic_sentences, key=lambda l:l[2])
 
+SentenceFile = open('data/writeTest.txt','w')
+
 for j in topic_sentences[0:5]:
-	print j[2], j[0], j[1]
-	print '\n'
-	
+	SentenceFile.write(j[0]+'\n')
+
+SentenceFile.close()
+WordFile.close()

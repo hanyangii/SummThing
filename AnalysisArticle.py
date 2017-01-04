@@ -1,4 +1,4 @@
-#!/usr/bin/env pythono
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from konlpy.utils import pprint

@@ -24,6 +24,7 @@ articles=[]
 g = Goose({'stopwords_class':StopWordsKorean})
 while True:
 	line = TrainFile.readline()
+	line= line.split('\n')[0]
 	if not line : break
 	new_article=newspaper.Article(line)
 	new_article.download()

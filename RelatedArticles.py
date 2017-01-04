@@ -39,6 +39,12 @@ def search_news(word_list):
 		tit_link = article.select('a')
 		if(len(tit_link)>0):
 			link = tit_link[0]['href']
+		
+		nlink = link.split('sec')
+		print nlink
+
+		if len(nlink)>1:
+			link='http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&'+nlink[1]
 		#Extract Article
 		print link
 		news=newspaper.Article(link,language='ko')
@@ -72,7 +78,7 @@ if __name__=='__main__':
 		title, date, url = article.pop_article()
 		date = date.isoformat()
 		print title
-		if len(title)>0: ArticleFile.write(title+' '+date+' '+url+'\n')
+		if len(title)>0: ArticleFile.write(title+'@@>>@@'+date+'@@>>@@'+url+'\n')
 
 	WordsFile.close()
 	ArticleFile.close()

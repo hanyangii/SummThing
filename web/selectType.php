@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <br><br>
 <a href=./storeURL.php><h1>SummThing</h1></a>
+
+<div align="center"><a href=./aboutUS.html>about US</a></div>
+
 <title>Select Type</title>
 </head>
 <br>
@@ -35,9 +38,13 @@
 // If store button is clicked -> function call
 $filename = "../data/url.txt";
 
+exec('chmod -R 777 ../data', $output);
+while(list($key, $val)=each($output)){
+	echo $key."=".$val."\n";
+}
+
 // Open file with write option.
 if(($handle = fopen($filename, "w")) !== FALSE){
-	// String text = "http://~~";
 	$text = $_POST["url"];
 	$text .= "\r\n";
 	fwrite($handle, $text);

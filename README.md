@@ -34,6 +34,7 @@ SummThing은 다음과 같은 환경에서 구동됩니다.
 	```
 ## Installation(Mac OS)
 	```bash
+	$sudo easy_install pip
 	$pip install JPype1
 	$pip install konlpy
 	$pip install --upgrade lxml

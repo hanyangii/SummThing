@@ -3,6 +3,9 @@
 <head><link rel="stylesheet" type="text/css" href="design.css">
 <meta charset="utf-8">
 <a href=./storeURL.php><div class="head"><h1>SummThing</h1></div></a>
+
+<div align="center"><a href=./aboutUS.html>about US</a></div>
+
 <title>Store URL</title>
 </head>
 <body>
@@ -13,6 +16,7 @@
 	id="url" name="url" style="color:gray ; font-size: 10pt">
 	<button name="store_but">url입력</button>	
 </form>
+
 <!--
 <form method="post" action="selectType.php">
 	<input type="submit" value="결과보기" >

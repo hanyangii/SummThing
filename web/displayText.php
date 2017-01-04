@@ -30,7 +30,7 @@ $textF = "../data/writeTest.txt";
 
 // Open file with write option.
 if(($handle = fopen($wordF, "w")) !== FALSE){
-//	fwrite($handle, $text);
+	fwrite($handle, $text);
 	echo "writeWord.txt created<br>";
 }
 else{
@@ -38,7 +38,7 @@ else{
 }
 // Open file with write option.
 if(($handle = fopen($textF, "w")) !== FALSE){
-//	fwrite($handle, $text);
+	fwrite($handle, $text);
 	echo "writeTest.txt created<br>";
 }
 else{
@@ -100,7 +100,7 @@ while(!feof($tf)){//check the file's end
 	echo "<br>";
 }
 
-//echo$buffer;
+echo$buffer;
 fclose($tf);
 fclose($wf);
 

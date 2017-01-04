@@ -21,7 +21,7 @@ def get_bill_text():
 	doc_list= []
 	bloblist = []
 	#The name of book is written on tran_data.txt
-	f = open('../data/url.txt')
+	f = open('./data/url.txt')
 	g = Goose({'stopwords_class':StopWordsKorean})
 	
 	lines = f.readlines()
@@ -58,5 +58,5 @@ if __name__ == "__main__":
 	tags = get_tags(text)
 #	print (os.getcwd()) #현재 디렉토리의
 #	print(tags)
-	draw_cloud(tags, '../wordcloud.png')
+	draw_cloud(tags, './wordcloud.png')
 

@@ -23,17 +23,17 @@ SummThing은 다음과 같은 환경에서 구동됩니다.
 - Apache 2.4 
 
 ## Installaion(Ubuntu)
-	```bash
+	
 	$ sudo apt-get update
 	$ sudo apt-get install pip git curl libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms1-dev libwebp-dev python-pygame python3-pip
 	$ sudo pip install JPype1 konlpy Pillow
 	$ sudo pip install -U lxml
-	$bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
+	$ bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 	$ cd SUMMTHING_HOME
 	$pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
-	```
+	
 ## Installation(Mac OS)
-	```bash
+	
 	$pip install JPype1
 	$pip install konlpy
 	$pip install --upgrade lxml
@@ -47,6 +47,6 @@ SummThing은 다음과 같은 환경에서 구동됩니다.
 
 	$cd SummThing
 	$pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
-	```
+	
 
 Naver D2 FEST Open Source Project

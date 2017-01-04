@@ -8,34 +8,32 @@
 <body>
 <br><br>
 
-<form method="post"><div style="text-align:center">
-	<input type="text" size = 100 text-color = "gray" value = "url 입력" onclick="this.value = ''" id="url" name="url" style="color:gray ; font-size: 10pt">
+<form method="post" action="selectType.php"><div style="text-align:center">
+	<input type="text" size = 100 value = "url 입력" onclick="this.value = ''" 
+	id="url" name="url" style="color:gray ; font-size: 10pt">
 	<button name="store_but">url입력</button>	
 </form>
-<form method="post" action="displayText.php">
+<!--
+<form method="post" action="selectType.php">
 	<input type="submit" value="결과보기" >
 </form>
 
-<?php 
-// If store button is clicked -> function call
-if(isset($_POST["store_but"])){
-	$filename = "../data/url.txt";
 
-	// Open file with write option.
-	if(($handle = fopen($filename, "w")) !== FALSE){
-		// String text = "http://~~";
-		$text = $_POST["url"];
-		$text .= "\r\n";
-		fwrite($handle, $text);
-		fclose($handle);
-		echo "<script>alert(\"saved\");</script>";
+<script type="text/javascript" language="javascript">
+	
+	function btn_js_confirm_click(){
+	  /* confirm(문자열, 초기값) */
+	  var check = confirm("확인 또는 취소 버튼");
+	  /* if(check == true) else false */
+	  if(check) alert("확인버튼 클릭");
+	  else alert("취소버튼 클릭");
 	}
-	else{
-		echo "<script>alert(\"can't not open\");</script>";
-	}
-}
-?>
 
+</script>
+<form method="post">
+	<input type="button" name="btn_js_confirm" id="btn_js_confirm" onclick="btn_js_confirm_click();" value="확인창" />
+</form>
 
+-->
 </body>
 </html>

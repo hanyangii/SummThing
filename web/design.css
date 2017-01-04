@@ -11,7 +11,7 @@ h1 {
 
 p {
 	font-family: 'Monaco', 'Helvetica';
-	font-size: 12px;
+	font-size: 13px;
 }
 
 a{
@@ -40,7 +40,6 @@ a{
   left: 150px;
 }
 
-
 /*table*/
 table {
 	font: 85% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS",
@@ -52,7 +51,7 @@ table {
 	background: #f9fce8;
 }
 table caption {
-	text-align: left;
+	text-align: center;
 	padding-bottom: 10px;
 	font: 130% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS",
 		sans-serif;
@@ -60,11 +59,16 @@ table caption {
 table th {
     background: #fbf79d;
 	padding: 15px 10px;
-	text-align: left;
+	text-align: center;
 	font-weight: bold;
 }
 table td {
+	font: 105% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS",
+		sans-serif;
+	width: 180px;
+	height: 80px;
     padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #fbe8fc;
+    text-align: center;
+    vertical-align: center;
+    border : 2px solid orange;
 }

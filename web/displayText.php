@@ -2,8 +2,10 @@
 <html>
 <head><link rel="stylesheet" type="text/css" href="design.css">
 <meta charset="utf-8">
-<a href=./storeURL.php><div class="head"><h1>SummThing</h1></div></a>
-<title>Idong</title>
+<br><br>
+<a href=./storeURL.php><h1>SummThing</h1></a>
+<div style="text-align:center"><p>------------<br>요약문 보기</p></div>
+<title>Summarize Text</title>
 </head>
 
 <body>
@@ -30,7 +32,6 @@ $textF = "../data/writeTest.txt";
 $row = 0;
 $wf = fopen($wordF, "r") or die("Failed to load file.");
 echo "<div class=section>";
-echo "<table class=maintable>";
 
 echo "Key words<br>";
 while(!feof($wf)){ //check the file's end

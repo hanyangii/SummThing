@@ -13,8 +13,8 @@ from NewsCrawlling import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-GOOGLE_PREFIX="https://news.google.com/news/story?ncl=dpKqTn72qkbAbrMW-51QrGE_LZjHM&q="
-GOOGLE_POSTFIX="&lr=Korean&hl=ko&sa=X&ved=0ahUKEwjJ0a_O16fRAhXBrJQKHSIqBAcQqgIIJDAA"
+GOOGLE_PREFIX="http://m.news.naver.com/search.nhn?searchType=issue&searchQuery="
+GOOGLE_POSTFIX="&sm=all.basic&pd=1&startDate=&endDate="
 
 def construct_Article_class(title,url,date):
 	ArticleClass=Textdoc()
@@ -30,12 +30,12 @@ def search_news(word_list):
 		if word_list.index(word) == len(word_list)-1 : break
 		search_line=search_line+'+'
 	
-	url = GOOGLE_PREFIX+search_line+GOOGLE_POSTFIX
+	url = GOOGLE_PREFIX+search_line
 	print url
 	soup = get_source(url)
 	article_link =[]
 
-	for article in soup.find_all('div',{'class':'thumbnail'}):
+	for article in soup.find_all('li',{'class':'thmb'}):
 		tit_link = article.select('a')
 		if(len(tit_link)>0):
 			link = tit_link[0]['href']

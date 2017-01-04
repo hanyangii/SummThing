@@ -5,7 +5,6 @@
 ![Apache 2](https://img.shields.io/badge/license-Apache2-blue.svg?style=flat)
 
 ## What is SummThing?
-* URL : https://youtu.be/6YsN_UgW6ZA
 'SummThing'은 한글로 된 인터넷 기사를 분석하여 핵심 정보를 Summary 하고, 분석된 기사와 관련된 다른 기사 및 정보들을 검색해주는 웹 기반의 서비스입니다. 
 
 SummThing Project는 python과 php언어를 기반으로 개발되었으며, python National Language Toolkit(NLTK), 한국어 National Language Process Library인 KoNLPy, python article extractor인 goose-extractor와 newspapaer등을 이용하고 있습니다. 
@@ -15,6 +14,10 @@ SummThing Project는 python과 php언어를 기반으로 개발되었으며, pyt
 
 * KoNLpy에 대해 더 알고싶다면?
   http://konlpy.org/en/v0.4.4/
+  
+## 소개영상 URL
+https://youtu.be/6YsN_UgW6ZA
+
   
 ## Envrionment
 SummThing은 다음과 같은 운영체제를 지원합니다. 

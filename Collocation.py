@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from nltk import collocations
-from konlpy.tag import Kkma
+from konlpy.tag import Mecab
 
 import numpy as np
 import sys
@@ -27,7 +27,7 @@ def find_NNpairs(score_words):
 def get_collocation_pairs(article, data_save_file):
     nouns = get_nouns(article)
     measures = collocations.BigramAssocMeasures()
-    tagged_words = Kkma().pos(article)
+    tagged_words = Mecab().pos(article)
 
     if data_save_file != False:
         np.save(data_save_file, tagged_words)

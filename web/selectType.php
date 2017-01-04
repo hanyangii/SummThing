@@ -26,7 +26,7 @@
 </td><td>
 	<a href=./showCloud.php>워드클라우드보기</a>
 </td><td>
-	<a href=./showCloud.php>단어위치보기</a>
+	<a href=./showCloud.php>관련기사찾기</a>
 </td><td>
 	<a href=./graphTest.html>그래프보기</a>
 </td></tr>
@@ -37,11 +37,6 @@
 
 // If store button is clicked -> function call
 $filename = "../data/url.txt";
-
-exec('chmod -R 777 ../data', $output);
-while(list($key, $val)=each($output)){
-	echo $key."=".$val."\n";
-}
 
 // Open file with write option.
 if(($handle = fopen($filename, "w")) !== FALSE){

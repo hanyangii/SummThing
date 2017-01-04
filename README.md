@@ -37,15 +37,19 @@ SummThing은 다음과 같은 환경에서 구동됩니다.
 	$sudo easy_install pip
 	$pip install JPype1
 	$pip install konlpy
-	$pip install --upgrade lxml
+	$sudo pip install lmxl
 	$bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 
+	$brew install sdl sdl_image sdl_mixer sdl_ttf portmidi 
 	$brew install homebrew/python/pygame
+	$brew install mercurial
+
 	$brew install libtiff libjpeg webp littlecms
 	$pip install Pillow
 	$easy_install regex
 	$pip install -U textblob
 
+	$pip install -U pytagcloud
 	$cd SummThing
 	$pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
 	```

@@ -29,6 +29,7 @@ $wordF = "../data/writeWord.txt";
 $textF = "../data/writeTest.txt";
 
 // Open file with write option.
+/*
 if(($handle = fopen($wordF, "w")) !== FALSE){
 	fwrite($handle, $text);
 	echo "writeWord.txt created<br>";
@@ -44,7 +45,8 @@ if(($handle = fopen($textF, "w")) !== FALSE){
 else{
 	echo "writeWord.txt can't not create<br>";
 }
-
+*/
+/*
 
 //권한 설정
 exec('chmod 777 '.$wordF, $output);
@@ -56,8 +58,8 @@ while(list($key, $val)=each($output)){
 	echo $key."=".$val."\n";
 }
 
-
 //python 실행
+
 $command = "/usr/local/bin/python ../ArticleExtraction.py 2>&1";
 $pid = popen( $command,"r");
 while( !feof( $pid ) )
@@ -70,7 +72,7 @@ while( !feof( $pid ) )
 pclose($pid);
 fclose($handle);
 
-
+*/
 
 //print key words 
 $row = 0;

@@ -8,11 +8,11 @@
 <title>Word Cloud</title>
 </head>
 
-
+<!--
 <?php 
-
+/*
 	// If store button is clicked -> function call
-	$filename = "../wordcloud.png";
+	$filename = "./wordcloud.png";
 
 	// Open file with write option.
 	if(($handle = fopen($filename, "w")) !== FALSE){
@@ -38,9 +38,10 @@
 	}
 	pclose($pid);
 	fclose($handle);
+	*/
 	
 ?>
-
+-->
 <body>
 <br><br>
 <div style="text-align: center">

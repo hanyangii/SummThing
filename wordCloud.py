@@ -14,8 +14,6 @@ import pytagcloud # requires Korean font support
 import sys
 from goose import Goose
 from goose.text import StopWordsKorean
-from konlpy.tag import Kkma
-import os
 
 def get_bill_text():
 	doc_list= []

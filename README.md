@@ -30,23 +30,23 @@ SummThing은 다음과 같은 환경에서 구동됩니다.
 	$ sudo pip install -U lxml
 	$ bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 	$ cd SUMMTHING_HOME
-	$pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
+	$ pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
 	
 ## Installation(Mac OS)
 	
-	$pip install JPype1
-	$pip install konlpy
-	$pip install --upgrade lxml
-	$bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
+	$ pip install JPype1
+	$ pip install konlpy
+	$ pip install --upgrade lxml
+	$ bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 
-	$brew install homebrew/python/pygame
-	$brew install libtiff libjpeg webp littlecms
-	$pip install Pillow
-	$easy_install regex
-	$pip install -U textblob
+	$ brew install homebrew/python/pygame
+	$ brew install libtiff libjpeg webp littlecms
+	$ pip install Pillow
+	$ easy_install regex
+	$ pip install -U textblob
 
-	$cd SummThing
-	$pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
+	$ cd SUMMTHING_HOME
+	$ pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
 	
 
 Naver D2 FEST Open Source Project

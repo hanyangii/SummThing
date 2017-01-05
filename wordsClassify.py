@@ -2,18 +2,18 @@
 # -*- coding: utf-8 -*-
 
 from konlpy.utils import pprint
-from konlpy.tag import Hannanum
+from konlpy.tag import Mecab
 import pumsaWord
 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
  
-han = Hannanum()
+mecab = Mecab()
 
 sentence = u'" 저 녀석은 무슨 일을 시키면 언제나 거꾸로 한단 말 야. 엄마 개구리는 죽으면서 청개구리에게 말했어요.'
 result = []
-result = han.analyze(sentence)
+result = mecab.pos(sentence)
 
 joo_eo = []
 sool_eo = []

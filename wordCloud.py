@@ -19,7 +19,7 @@ def get_bill_text():
 	doc_list= []
 	bloblist = []
 	#The name of book is written on tran_data.txt
-	f = open('./data/url.txt')
+	f = open('../data/url.txt')
 	g = Goose({'stopwords_class':StopWordsKorean})
 	
 	lines = f.readlines()
@@ -37,7 +37,7 @@ def get_tags(text, ntags=50, multiplier=10):
    	return [{ 'color': color(), 'tag': n, 'size': c*multiplier }\
                 for n, c in count.most_common(ntags)]
 
-def draw_cloud(tags, filename, fontname='Noto Sans CJK', size=(800, 600)):
+def draw_cloud(tags, filename, fontname='korean', size=(800, 600)):
     pytagcloud.create_tag_image(tags, filename, fontname=fontname, size=size)
     webbrowser.open(filename)
 
@@ -56,5 +56,5 @@ if __name__ == "__main__":
 	tags = get_tags(text)
 #	print (os.getcwd()) #현재 디렉토리의
 #	print(tags)
-	draw_cloud(tags, './wordcloud.png')
+	draw_cloud(tags, '../wordcloud.png')
 

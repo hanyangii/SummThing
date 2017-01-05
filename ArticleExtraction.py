@@ -24,18 +24,19 @@ def article_from_url(url):
 	g = Goose({'stopwords_class':StopWordsKorean})
 	return g.extract(url=url)
 
-
-url = open('./data/url.txt','r').read()
+url = open('../data/url.txt','r').read()
 article = article_from_url(url)
 article = article.cleaned_text
 
 #merge collocation words
 nouns = get_nouns(article)
-word_pairs = get_collocation_pairs(article, './data/PosData.npy')
+
+word_pairs = get_collocation_pairs(article, '../data/PosData.npy')
 
 #Calcurate TF-IDF
-all_dic = np.load('./data/NounsCount.npy').tolist()
+all_dic = np.load('../data/NounsCount.npy').tolist()
 tfidf = []
+
 for noun in nouns:
 	idf_score = trained_idf(noun,all_dic)
 
@@ -87,7 +88,7 @@ for i in range(len(save_words)):
 sentences = SplitTextfile(article)
 score= [0 for i in range(len(sentences))]
 
-WordFile = open('./data/writeWord.txt','w')
+WordFile = open('../data/writeWord.txt','w')
 
 for word in topic_words:
 	WordFile.write(word[0]+'\n')
@@ -101,7 +102,7 @@ sorted_sentences = sorted(sentences, key=lambda l:l[1], reverse=True)
 topic_sentences = sorted_sentences[:5]
 topic_sentences = sorted(topic_sentences, key=lambda l:l[2])
 
-SentenceFile = open('./data/writeTest.txt','w')
+SentenceFile = open('../data/writeTest.txt','w')
 
 for j in topic_sentences[0:5]:
 	SentenceFile.write(j[0]+'\n')

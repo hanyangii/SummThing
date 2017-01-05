@@ -29,7 +29,7 @@ $wordF = "../data/writeWord.txt";
 $textF = "../data/writeTest.txt";
 
 // Open file with write option.
-/*
+
 if(($handle = fopen($wordF, "w")) !== FALSE){
 	fwrite($handle, $text);
 	echo "writeWord.txt created<br>";
@@ -45,8 +45,7 @@ if(($handle = fopen($textF, "w")) !== FALSE){
 else{
 	echo "writeWord.txt can't not create<br>";
 }
-*/
-/*
+
 
 //권한 설정
 exec('chmod 777 '.$wordF, $output);
@@ -72,7 +71,7 @@ while( !feof( $pid ) )
 pclose($pid);
 fclose($handle);
 
-*/
+
 
 //print key words 
 $row = 0;

@@ -66,3 +66,4 @@ if __name__ == '__main__':
     TrainFile = open('data/train_articles.txt','w')
     TrainFile.write(get_urls())
     TrainFile.close()
+    sts=urllib.que

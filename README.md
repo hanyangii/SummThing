@@ -66,7 +66,9 @@ SummThing은 다음과 같은 환경에서 구동됩니다.
 	$pip install simplejson
 	$cd SummThing
 	$pip install https://pypi.python.org/packages/source/g/goose-extractor/goose-extractor-1.0.22.tar.gz
-
+	$pip install bs4
+	$pip install newspaper
+	
 ## License
 This library is licensed under Apache 2.0. Full license text is available in [LICENSE](LICENSE.txt).
 	

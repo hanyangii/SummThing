@@ -26,7 +26,7 @@
 </td><td>
 	<a href=./showCloud.php>워드클라우드보기</a>
 </td><td>
-	<a href=./showCloud.php>관련기사찾기</a>
+	<a href=./searchArticle.php>관련기사찾기</a>
 </td><td>
 	<a href=./graphTest.html>그래프보기</a>
 </td></tr>
